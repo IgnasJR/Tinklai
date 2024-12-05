@@ -6,7 +6,7 @@ const RoomPage = () => {
     const [roomData, setRoomData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/room/${id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/room/${id}`)
             .then(response => response.json())
             .then(data => {
                 setRoomData(data);

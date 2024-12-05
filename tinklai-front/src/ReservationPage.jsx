@@ -6,7 +6,7 @@ const ReservationPage = ({ token, role }) => {
     const [reservations, setReservations] = useState([]);
 
     const fetchReservations = () => {
-        axios.get('http://localhost:5000/api/reservations', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/reservations`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -26,7 +26,7 @@ const ReservationPage = ({ token, role }) => {
     function confirmReservation(id, sum) {
         if (role === 'admin' || role === 'manager') {
             if (window.confirm(`Are you sure you want to confirm reservation: ${id}?`)) {
-                fetch(`http://localhost:5000/api/reservation/confirm`, {
+                fetch(`${process.env.REACT_APP_BACKEND_URL}/api/reservation/confirm`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const ReservationPage = ({ token, role }) => {
         }
         else {
             if (window.confirm(`Are you sure you want to pay: ${sum}?`)) {
-                fetch(`http://localhost:5000/api/reservation/pay`, {
+                fetch(`${process.env.REACT_APP_BACKEND_URL}/api/reservation/pay`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const ReservationPage = ({ token, role }) => {
 
     function cancelReservation(id) {
         if (window.confirm(`Are you sure you want to cancel reservation: ${id}?`)) {
-            fetch(`http://localhost:5000/api/reservation/cancel`, {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/reservation/cancel`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

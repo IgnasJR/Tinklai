@@ -6,7 +6,7 @@ const reservationController = require('./Controllers/reservationController');
 const notificationController = require('./Controllers/notificationController');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());

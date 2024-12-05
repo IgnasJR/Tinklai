@@ -9,7 +9,7 @@ const Notifications = ({ role }) => {
     const [userid, setUserid] = useState('');
 
     const getUsers = () => {
-        axios.get('http://localhost:5000/api/users', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -19,7 +19,7 @@ const Notifications = ({ role }) => {
     };
 
     const getNotifications = () => {
-        axios.get('http://localhost:5000/api/notifications', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/notifications`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -29,7 +29,7 @@ const Notifications = ({ role }) => {
     };
 
     const markAsRead = (id) => {
-        axios.post('http://localhost:5000/api/notifications/read', { id }, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/notifications/read`, { id }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -45,7 +45,7 @@ const Notifications = ({ role }) => {
     };
 
     const sendNotification = (message, userId) => {
-        axios.post('http://localhost:5000/api/notifications', { message, userId }, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/notifications`, { message, userId }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },

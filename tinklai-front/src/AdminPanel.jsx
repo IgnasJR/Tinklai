@@ -19,7 +19,7 @@ const AdminPanel = ({ token, role }) => {
     }, []);
 
     const fetchHotels = () => {
-        axios.get('http://localhost:5000/api/hotels', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/hotels`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -29,7 +29,7 @@ const AdminPanel = ({ token, role }) => {
     };
 
     const handleMakeAdmin = (id) => {
-        axios.post('http://localhost:5000/api/user/make-admin', { id }, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/make-admin`, { id }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -45,7 +45,7 @@ const AdminPanel = ({ token, role }) => {
     };
 
     const getUsers = () => {
-        axios.get('http://localhost:5000/api/users', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -67,7 +67,7 @@ const AdminPanel = ({ token, role }) => {
             image
         };
 
-        axios.post('http://localhost:5000/api/rooms', newRoom, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/rooms`, newRoom, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

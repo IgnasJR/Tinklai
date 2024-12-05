@@ -15,7 +15,7 @@ function RegisterPage() {
         setSuccess('');
 
         try {
-            const response = await axios.post('http://localhost:5000/api/register', { name, email, password });
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, { name, email, password });
             setSuccess(response.data.message);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.error) {

@@ -17,7 +17,7 @@ function HomePage({ token }) {
     }, []);
 
     const fetchRooms = () => {
-        axios.get('http://localhost:5000/api/rooms', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/rooms`, {
             params: {
                 start_date: startDate,
                 end_date: endDate,
@@ -32,7 +32,7 @@ function HomePage({ token }) {
     };
 
     function reserveRoom(roomId) {
-        axios.post(`http://localhost:5000/api/reserve`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/reserve`, {
             roomId,
             startDate,
             endDate,
